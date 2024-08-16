@@ -16,7 +16,7 @@ namespace XPSystem
 
         public string[] Aliases => new string[] { "lb" };
 
-        public string Description => "Players, sorted by their LV (Level of Violence). Use: XPSystem leaderboard (amount)";
+        public string Description => "排行榜";
 
         public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
@@ -33,7 +33,7 @@ namespace XPSystem
                     response = GetTopPlayers(amount, sender);
                     return true;
                 }
-                response = "Invalid players amount.";
+                response = "错误.";
                 return false;
             }
         }
@@ -52,7 +52,7 @@ namespace XPSystem
             Player player = Player.Get(sender);
             if (Main.Players.TryGetValue(player.UserId, out PlayerLogSer playerLogSer))
             {
-                builder.AppendLine($"\nYou: {players.ToList().FindIndex(o => o.Key == player.UserId) + 1}. LVL{playerLogSer.LVL}, XP: {playerLogSer.XP}");
+                builder.AppendLine($"\n你: {players.ToList().FindIndex(o => o.Key == player.UserId) + 1}. LVL{playerLogSer.LVL}, XP: {playerLogSer.XP}");
             }
             return builder.ToString();
         }

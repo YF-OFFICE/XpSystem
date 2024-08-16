@@ -11,16 +11,16 @@ namespace XPSystem
     {
         public bool IsEnabled { get; set; } = true;
 
-        [Description("Hint shown to the players if they have DNT enabled.")]
-        public string DNTHint { get; set; } = "We can't track your stats while you have DNT enabled in your game options!";
-        [Description("Badge for players with DNT enabled.")]
+        [Description("如果玩家DNT打开 那么展示的广播.")]
+        public string DNTHint { get; set; } = "当您在游戏选项中启用DNT时，我们无法储存你的经验数据！";
+        [Description("开启DNT所获得的称号.")]
         public Badge DNTBadge { get; set; } = new Badge
         {
             Name = "(DNT) anonymous man????",
             Color = "nickel"
         };
 
-        [Description("(You may add your own entries) Role1: Role2: XP player with Role1 gets for killing a person with Role2 ")]
+        [Description("角色1：角色2：拥有角色1的XP玩家因杀死角色2的人而获得奖励")]
         public Dictionary<RoleTypeId, Dictionary<RoleTypeId, int>> KillXP { get; set; } = new Dictionary<RoleTypeId, Dictionary<RoleTypeId, int>>()
         {
             [RoleTypeId.ClassD] = new Dictionary<RoleTypeId, int>()
@@ -52,32 +52,32 @@ namespace XPSystem
                 [RoleTypeId.Scp939] = 500
             }
         };
-        [Description("XP gained for 079 on assist")]
+        [Description("079次助攻获得XP")]
         public int AssistXP { get; set; } = 300;
 
-        [Description("How many XP should a player get if their team wins.")]
+        [Description("团队胜利获得多少经验.")]
         public int TeamWinXP { get; set; } = 250;
 
-        [Description("How many XP is required to advance a level.")]
+        [Description("多少经验可以升一级.")]
         public int XPPerLevel { get; set; } = 1000;
 
-        [Description("Show a mini-hint if a player gets XP")]
+        [Description("展示增加经验的提示")]
         public bool ShowAddedXP { get; set; } = true;
 
-        [Description("Show a hint to the player if he advances a level.")]
+        [Description("新等级是否提示.")]
         public bool ShowAddedLVL { get; set; } = true;
 
-        [Description("What hint to show if player advances a level. (if ShowAddedLVL = false, this is irrelevant)")]
-        public string AddedLVLHint { get; set; } = "NEW LEVEL: <color=red>%level%</color>";
+        [Description("如果玩家升级，会显示什么提示。（如果ShowAddedLVL=false，则此项并没有影响）")]
+        public string AddedLVLHint { get; set; } = "新等级: <color=red>%level%</color>";
 
-        [Description("(You may add your own entries) How many XP a player gets for escaping")]
+        [Description("（您可以添加自己的条目）玩家逃跑可以获得多少经验值")]
         public Dictionary<RoleTypeId, int> EscapeXP { get; set; } = new Dictionary<RoleTypeId, int>()
         {
             [RoleTypeId.ClassD] = 500,
             [RoleTypeId.Scientist] = 300
         };
 
-        [Description("(You may add your own entries) Level threshold and a badge. if you get a TAG FAIL in your console, either change your color, or remove special characters like brackets.")]
+        [Description("对应的等级所拥有的称号")]
         public Dictionary<int, Badge> LevelsBadge { get; set; } = new Dictionary<int, Badge>()
         {
             [0] = new Badge
@@ -107,13 +107,13 @@ namespace XPSystem
             }
         };
 
-        [Description("The structure of the badge displayed in-game. Variables: %lvl% - the level. %badge% earned badge in specified in LevelsBadge. %oldbadge% - base-game badge, like ones specified in config-remoteadmin, or a global badge. can be null.")]
+        [Description("游戏中显示的称号结构。变量：%lvl%-等级。%badge%在LevelsBadge中指定的时间获得徽章。%oldbadge% 游戏徽章，如配置remoteadmin中指定的徽章，或全局徽章。可以为空.")]
         public string BadgeStructure { get; set; } = "(LVL %lvl% | %badge%) %oldbadge%";
-        [Description("Path files get saved to. Requires change on linux.")]
+        [Description("保存路径.")]
         public string SavePath { get; set; } = Path.Combine(Paths.Configs, @"Players.json");
-        [Description("Override colors for people who already have a rank")]
+        [Description("是否覆盖已有称号玩家的称号")]
         public bool OverrideRAColor { get; set; } = false;
-        [Description("Do not enable this unless the creator told you to, if you don't wanna be spammed with unhelpful messages of course")]
+        [Description("测试用")]
         public bool Debug { get; set; } = false;
     }
 }

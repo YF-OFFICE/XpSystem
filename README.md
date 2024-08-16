@@ -1,5 +1,5 @@
 # XPSystem
- A basic, customisable XP and LVL system for SCP: SL.
+经验系统
 ## Config
 ```
 x_p_system:

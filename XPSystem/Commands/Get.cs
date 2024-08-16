@@ -14,7 +14,7 @@ namespace XPSystem
 
         public string[] Aliases => new string[] { "stats" };
 
-        public string Description => "Gets the player's XP and LVL values by userid";
+        public string Description => "获取玩家的经验等级";
 
         public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
@@ -23,7 +23,7 @@ namespace XPSystem
                 Player player = Player.Get(sender);
                 if (player == null || player.DoNotTrack)
                 {
-                    response = "usage: xps get (userid)";
+                    response = "用法: xps get (userid)";
                     return false;
                 }
                 var players = Main.Players.OrderByDescending(o => o.Value.LVL * Main.Instance.Config.XPPerLevel + o.Value.XP);
@@ -34,7 +34,7 @@ namespace XPSystem
             }
             if (!Main.Players.TryGetValue(arguments.At(0), out PlayerLogSer log))
             {
-                response = "invalid ID";
+                response = "错误ID";
                 return false;
             }
             response = $"LVL: {log.LVL} | XP: {log.XP}";
