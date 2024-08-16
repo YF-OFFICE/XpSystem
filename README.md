@@ -1,5 +1,5 @@
 # XPSystem
-����ϵͳ
+好用的经验系统
 ## Config
 ```
 x_p_system:
